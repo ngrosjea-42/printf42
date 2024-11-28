@@ -6,7 +6,7 @@
 /*   By: ngrosjea <ngrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:43:51 by ngrosjea          #+#    #+#             */
-/*   Updated: 2024/11/26 17:13:31 by ngrosjea         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:28:09 by ngrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	i = 0;
 	va_start(ap, format);
+	if (!format)
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+				return (-1);
 			count += ft_isformat(format[i], ap);
 		}
 		else
